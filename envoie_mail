@@ -32,7 +32,7 @@ def sendEmail (text,type,etat):
 	message += '<br />'
 	message += 'Merci de reglé le probleme'
 	message += '<br />'
-	message += 'Florian Catinaud'
+	message += 'Shaïan AMABLE'
 	message += end_email()
 	mailserver = smtplib.SMTP('smtp.gmail.com', 587)
 	mailserver.ehlo()
