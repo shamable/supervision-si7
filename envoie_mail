@@ -35,6 +35,7 @@ def sendEmail (text,type,etat):
 	message += 'Shaïan AMABLE'
 	message += end_email()
 	mailserver = smtplib.SMTP('smtp.gmail.com', 587)
+	
 	mailserver.ehlo()
 	mailserver.starttls()
 	mailserver.ehlo()
