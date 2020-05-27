@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="utf-8">
+	<title>{{title}}</title>
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/datatables.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/datable_css/dataTables.bootstrap.css')}}" type="text/css">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/datable_css/dataTables.bootstrap4.css')}}" type="text/css">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/datable_css/dataTables.foundation.css')}}" type="text/css">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/datable_css/dataTables.jqueryui.css')}}" type="text/css">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/datable_css/dataTables.semanticui.css')}}" type="text/css">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/datable_css/jquery.dataTables.css')}}" type="text/css">
+</head>
+<body>
+	<section class="container" style="background-color: rgba(200,200,200,0.5)">
+		<a style="margin: auto;" href="/">Home</a>
+		<div>
+			<table align="center" border="1" >
+				<tr align="center">
+					<td class="sorting_1">#</td>
+					<td class="sorting_1">Mail</td>
+					{# Ne mettre sa que pour les admins #}
+					<td class="sorting_1">Mot de passe</td>
+					<td class="sorting_1">Role</td>
+					<td class="sorting_1">Supprimer</td>
+				</tr>
+				{% for row in mail %}
+				<tr align="center">
+					<td class="sorting_1">{{row[0]}}</td>
+					<td class="sorting_1">{{row[1]}}</td>
+					<td class="sorting_1">{{row[2]}}</td>
+					{%if row[3] == 'T' %}
+					<td class="sorting_1">Techinicien</td>
+					{% elif row[3] == 'A' %}
+					<td class="sorting_1">Admin</td>
+					{% endif %}
+					<td class="sorting_1"><a href="/deleteEmail/{{row[0]}}">Supprimer</a></td>
+				</tr>
+				{%endfor%}
+			</table>
+		</div>
+		<div class="justify-content-center">
+			<form style="padding: 1%" action="/mailtest" method="post" align="center">
+				<input class="btn btn-primary" type="submit" value="Envoyer">
+			</form>
+		</div>
+	</section>
+	
+	<script src="{{url_for('static', filename='js/jquery-3.4.1.js')}}"></script>
+	<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+	<script src="{{url_for('static', filename='js/datatables.js')}}"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</body>
+</html>
